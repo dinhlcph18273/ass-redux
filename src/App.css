@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import '~antd/dist/antd.css';
+
+.banner {
+    background-image: url("https://theme.hstatic.net/1000333483/1000450410/14/index_banner.jpg");
+    background-size: cover;
+    height: 570px;
+    position: relative;
+}
+
+.name {
+    text-shadow: 2px 6px 8px #292929;
+    text-align: center;
+}
