@@ -30,8 +30,8 @@ const ListCategory = () => {
             dataIndex: '_id',
             render: (id: any) => (
                 <Row>
-                    <Link to={`/admin/category/${id}/edit`}>
-                        <Button type="primary" icon={<EditOutlined />}> </Button>
+                    <Link className='edit-to' to={`/admin/category/${id}/edit`}>
+                        <Button type="primary" icon={<EditOutlined />}></Button>
                     </Link>
                     <Button type="primary" danger icon={<DeleteOutlined />} onClick={() => {
                         const confirm = window.confirm("muốn xóa không?")
@@ -51,7 +51,7 @@ const ListCategory = () => {
         <div>
             <Row>
                 <Link to="/admin/category/add">
-                    <Button>Add</Button>
+                    <Button type='primary' className='submit-to' > Add </Button>
                 </Link>
             </Row>
             <Table

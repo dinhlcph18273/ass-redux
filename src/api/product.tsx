@@ -22,8 +22,12 @@ export const read = (id: any) => {
 }
 
 export const remove = (id: number) => {
-    const url = `/products/${id}`
-    return instance.delete(url)
+    const url = `/products/${id}/${user?.user._id}`
+    return instance.delete(url, {
+        headers: {
+            "Authorization": `Bearer ${user?.token}`
+        }
+    })
 }
 
 export const update = (product: any) => {

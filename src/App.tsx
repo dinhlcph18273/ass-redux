@@ -12,9 +12,15 @@ import Dashboard from './pages/admin/Dashboard';
 import Homepage from './pages/Homepage';
 import AdminLayout from './pages/layouts/AdminLayout';
 import WebsiteLayout from './pages/layouts/WebsiteLayout';
-import Product from './pages/Product';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
+import AboutPage from './pages/AboutPage';
+
+
+// import styles bundle
+import 'swiper/css/bundle';
+import ProductPage from './pages/ProductPage';
+import PrivateRouter from './component/PrivateRouter';
 
 function App() {
   return (
@@ -22,9 +28,10 @@ function App() {
       <Routes>
         <Route path='/' element={<WebsiteLayout />} >
           <Route index element={<Homepage />} />
-          <Route path='products' element={<Product />} />
+          <Route path='products' element={<ProductPage />} />
+          <Route path='about' element={<AboutPage />} />
         </Route>
-        <Route path='admin' element={<AdminLayout />}>
+        <Route path='admin' element={<PrivateRouter><AdminLayout /></PrivateRouter>}>
           <Route index element={<Dashboard />} />
           <Route path='products'>
             <Route index element={<ListProducts />} />

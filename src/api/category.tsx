@@ -16,12 +16,20 @@ export const listCate = () => {
     return instance.get(url)
 }
 export const removeCate = (id: any) => {
-    const url = `/category/${id}`
-    return instance.delete(url)
+    const url = `/category/${id}/${user?.user._id}`
+    return instance.delete(url, {
+        headers: {
+            "Authorization": `Bearer ${user?.token}`
+        }
+    })
 }
 export const updateCate = (category: any) => {
-    const url = `/category/${category.id}`
-    return instance.put(url, category)
+    const url = `/category/${category.id}/${user?.user._id}`
+    return instance.put(url, category, {
+        headers: {
+            "Authorization": `Bearer ${user?.token}`
+        }
+    })
 }
 export const readCate = (id: any) => {
     const url = `/category/${id}`

@@ -3,6 +3,8 @@ import productReducer from '../features/product/productSlice';
 import userReducer from '../features/user/userSlice';
 import authReducer from '../features/auth/authSlice';
 import categoryReducer from "../features/category/categorySlice"
+import postReducer from "../features/post/postSlice"
+
 
 
 
@@ -12,6 +14,7 @@ export const store = configureStore({
     user: userReducer,
     auth: authReducer,
     category: categoryReducer,
+    post: postReducer
   },
 });
 

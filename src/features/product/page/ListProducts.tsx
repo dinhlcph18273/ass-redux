@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import { EditOutlined, DeleteFilled } from "@ant-design/icons"
 
 
-
 const ListProducts = () => {
     const products = useSelector((data: any) => data.product.value);
     const dispatch = useDispatch();
@@ -27,7 +26,6 @@ const ListProducts = () => {
                 width={200}
                 height={200}
                 src={text}
-
             />,
         },
         {
@@ -39,7 +37,7 @@ const ListProducts = () => {
             dataIndex: '_id',
             render: (id: any) => (
                 <Row>
-                    <Link to={`/admin/products/${id}/edit`}>
+                    <Link className='edit-to' to={`/admin/products/${id}/edit`}>
                         <Button type="primary" icon={<EditOutlined />}></Button>
                     </Link>
                     <Button type="primary" danger icon={<DeleteFilled />} onClick={() => {
@@ -60,7 +58,7 @@ const ListProducts = () => {
         <div>
             <Row>
                 <Link to="/admin/products/add">
-                    <Button>Add</Button>
+                    <Button type='primary' className='submit-to'> Add </Button>
                 </Link>
             </Row>
             <Table

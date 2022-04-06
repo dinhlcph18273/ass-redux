@@ -89,7 +89,7 @@ const EditCategory = () => {
                         span: 16,
                     }}
                 >
-                    <Button type="primary" htmlType="submit">
+                    <Button type="primary" className='submit-to' htmlType="submit">
                         Submit
                     </Button>
                 </Form.Item>
