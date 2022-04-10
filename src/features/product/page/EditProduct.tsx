@@ -102,10 +102,10 @@ const EditProduct = () => {
                     }}
                 >
                     <Select >
-                        <Option value="6242e1e4163be05a4ba3ab90">Jack</Option>
-                        <Option value="lucy">Lucy</Option>
-                        <Option value="gap">Gap</Option>
-                        <Option value="Yiminghe">yiminghe</Option>
+                        <Option value="6242e1e4163be05a4ba3ab90">Rau củ</Option>
+                        <Option value="6242e1e7163be05a4ba3ab92">Hải Sản</Option>
+                        <Option value="6242e577e5d985aa3392365f">Trái cây</Option>
+                        <Option value="6242f007e5d985aa33923696">Thịt Trứng</Option>
                     </Select>
                 </Form.Item>
                 <Form.Item

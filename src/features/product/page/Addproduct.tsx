@@ -2,14 +2,17 @@ import React from 'react'
 import { Form, Input, Button, Checkbox, Select, InputNumber } from 'antd';
 import { useDispatch } from 'react-redux';
 import { addProducts } from '../productSlice';
+import { useNavigate } from 'react-router-dom';
 
 const { Option } = Select;
 
 const Addproduct = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate()
     const onFinish = (values: any) => {
         console.log('Success:', values);
         dispatch(addProducts(values))
+        navigate("/admin/products")
     };
 
     const onFinishFailed = (errorInfo: any) => {
@@ -89,10 +92,10 @@ const Addproduct = () => {
                     }}
                 >
                     <Select >
-                        <Option value="6242e1e4163be05a4ba3ab90">Jack</Option>
-                        <Option value="lucy">Lucy</Option>
-                        <Option value="gap">Gap</Option>
-                        <Option value="Yiminghe">yiminghe</Option>
+                        <Option value="6242e1e4163be05a4ba3ab90">Rau củ</Option>
+                        <Option value="6242e1e7163be05a4ba3ab92">Hải Sản</Option>
+                        <Option value="6242e577e5d985aa3392365f">Trái cây</Option>
+                        <Option value="6242f007e5d985aa33923696">Thịt Trứng</Option>
                     </Select>
                 </Form.Item>
                 <Form.Item

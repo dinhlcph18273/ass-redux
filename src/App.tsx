@@ -21,6 +21,8 @@ import AboutPage from './pages/AboutPage';
 import 'swiper/css/bundle';
 import ProductPage from './pages/ProductPage';
 import PrivateRouter from './component/PrivateRouter';
+import ProductDetail from './pages/ProductDetail';
+import ProductWithCate from './component/ProductWithCate';
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
         <Route path='/' element={<WebsiteLayout />} >
           <Route index element={<Homepage />} />
           <Route path='products' element={<ProductPage />} />
+          <Route path='products/:id' element={<ProductDetail />} />
+          <Route path='category/:id' element={<ProductWithCate />} />
           <Route path='about' element={<AboutPage />} />
         </Route>
         <Route path='admin' element={<PrivateRouter><AdminLayout /></PrivateRouter>}>

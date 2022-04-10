@@ -38,3 +38,13 @@ export const update = (product: any) => {
         }
     })
 }
+
+export const sort = async (sort: any, order: any) => {
+    const url = `products?sort=${sort}&order=${order}`
+    return instance.get(url)
+}
+
+export const search = async (value: any) => {
+    const url = `products/search?q=${value.value}`
+    return instance.post(url, value)
+}

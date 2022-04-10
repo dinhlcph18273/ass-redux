@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { add, list, read, remove, update } from "../../api/product";
+import { readCate } from "../../api/category";
+import { add, list, read, remove, search, update } from "../../api/product";
 
 export const getProducts = createAsyncThunk(
     "product/getProduct",
@@ -19,6 +20,7 @@ export const addProducts = createAsyncThunk(
         try {
             const { data } = await add(product);
             return data
+
         } catch (error) {
             console.log(error);
         }
@@ -57,11 +59,34 @@ export const readProduct = createAsyncThunk(
         }
     }
 )
+
+export const readProductWithCate = createAsyncThunk(
+    "product/readProductWithCate",
+    async (id: any) => {
+        try {
+            const { data: { products } } = await readCate(id)
+            return products
+        } catch (error) {
+            console.log(error);
+        }
+    }
+)
+
+export const SearchProducts = createAsyncThunk(
+    "product/SearchProducts",
+    async (q) => {
+        try {
+            const { data } = await search(q)
+            return data
+        } catch (error) {
+            console.log(error);
+        }
+    }
+)
 const productSlice = createSlice({
     name: "product",
     initialState: {
         value: [],
-        valueOne: []
     },
     reducers: {
 
@@ -77,13 +102,18 @@ const productSlice = createSlice({
             state.value.push(action.payload)
         });
         builder.addCase(readProduct.fulfilled, (state: any, action: any) => {
-            state.valueOne = action.payload
+            state.value = action.payload
         });
         builder.addCase(updateProducts.fulfilled, (state: any, action: any) => {
             state.value = state.value.map((item: any) =>
                 item._id === action.payload._id ? action.payload : item)
         })
-
+        builder.addCase(readProductWithCate.fulfilled, (state, action) => {
+            state.value = action.payload
+        })
+        builder.addCase(SearchProducts.fulfilled, (state, action) => {
+            state.value = action.payload
+        })
     }
 })
 
