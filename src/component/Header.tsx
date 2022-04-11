@@ -3,10 +3,18 @@ import { Button } from 'antd'
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { isAuthenticate, Signout } from '../utils/localStorage'
+import { Input } from 'antd';
+import { useAppDispatch } from '../app/hooks'
+import { SearchProducts } from '../features/product/productSlice'
+const { Search } = Input;
 
 const Header = () => {
     const isSignin = isAuthenticate("user");
     const navigate = useNavigate();
+    const dispatch = useAppDispatch()
+    const onSearch = (value: any) => {
+        dispatch(SearchProducts({ value: value }))
+    }
     const SignOut = () => {
         Signout("user");
         navigate("/")
@@ -45,7 +53,7 @@ const Header = () => {
                     <li><Link className="block p-2 py-2 text-[#989898] hover:text-white hover:rounded hover:bg-lime-600 text-lg " to="/admin">Dashboard page</Link></li>
                 </ul>
                 <form id="search" className="pr-2 ml-20 relative">
-                    <input type="text" id="name" className="border border-none rounded-xl px-3 bg-[#cdcdcd]" placeholder="Search..." />
+                    <Search onSearch={onSearch} placeholder="Search..." />
                     <button className="absolute right-5"><i className="fa-solid fa-magnifying-glass" /></button>
                 </form>
                 <button className="ml-20 text-lg relative">

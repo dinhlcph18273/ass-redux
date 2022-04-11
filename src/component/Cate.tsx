@@ -9,6 +9,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { Link } from 'react-router-dom';
 
 const Cate = () => {
     return (
@@ -90,10 +91,10 @@ const Cate = () => {
                     spaceBetween={5}
                     slidesPerView={3}
                 >
-                    <SwiperSlide><a href=""><img className="mx-auto hover:scale-125 transition ease-in-out duration-500 " src={`https://theme.hstatic.net/1000333483/1000450410/14/index_promotion_2.jpg?v=1943`} alt="" /></a></SwiperSlide>
-                    <SwiperSlide><a href=""><img className="mx-auto hover:scale-125 transition ease-in-out duration-500 " src={`https://theme.hstatic.net/1000333483/1000450410/14/index_promotion_3.jpg?v=1943`} alt="" /></a></SwiperSlide>
-                    <SwiperSlide><a href=""><img className="mx-auto hover:scale-125 transition ease-in-out duration-500 " src={`https://theme.hstatic.net/1000333483/1000450410/14/index_promotion_4.jpg?v=1943`} alt="" /></a></SwiperSlide>
-                    <SwiperSlide><a href=""><img className="mx-auto hover:scale-125 transition ease-in-out duration-500 " src={`https://theme.hstatic.net/1000333483/1000450410/14/index_promotion_5.jpg?v=1943`} alt="" /></a></SwiperSlide>
+                    <SwiperSlide><Link to=""><img className="mx-auto hover:scale-125 transition ease-in-out duration-500 " src={`https://theme.hstatic.net/1000333483/1000450410/14/index_promotion_2.jpg?v=1943`} alt="" /></Link></SwiperSlide>
+                    <SwiperSlide><Link to=""><img className="mx-auto hover:scale-125 transition ease-in-out duration-500 " src={`https://theme.hstatic.net/1000333483/1000450410/14/index_promotion_3.jpg?v=1943`} alt="" /></Link></SwiperSlide>
+                    <SwiperSlide><Link to=""><img className="mx-auto hover:scale-125 transition ease-in-out duration-500 " src={`https://theme.hstatic.net/1000333483/1000450410/14/index_promotion_4.jpg?v=1943`} alt="" /></Link></SwiperSlide>
+                    <SwiperSlide><Link to=""><img className="mx-auto hover:scale-125 transition ease-in-out duration-500 " src={`https://theme.hstatic.net/1000333483/1000450410/14/index_promotion_5.jpg?v=1943`} alt="" /></Link></SwiperSlide>
                 </Swiper>
             </div>
         </div></div>

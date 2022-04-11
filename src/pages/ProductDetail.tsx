@@ -4,12 +4,23 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom';
 import Header from '../component/Header';
 import { readProduct } from '../features/product/productSlice';
+import { addToCart, isAuthenticate } from '../utils/localStorage';
 
 
 const ProductDetail = () => {
     const product = useSelector((data: any) => data.product.value)
     const dispatch = useDispatch();
     const { id } = useParams()
+
+    const AddCart = () => {
+        const { user } = isAuthenticate("user")
+        addToCart({
+            ...product,
+            user: user._id
+        }, () => {
+            alert("ok")
+        })
+    }
     useEffect(() => {
         dispatch(readProduct(id))
     }, [dispatch, id])
@@ -40,7 +51,7 @@ const ProductDetail = () => {
                                 <input type="number" id="inputValue" className="border border-gray-500" />
                             </div>
                             <p className="py-4">{product?.desc}</p>
-                            <button id="btnAddToCart" className="px-8 py-2 bg-lime-500 text-white hover:bg-lime-600 my-5">Add Cart</button>
+                            <button onClick={AddCart} className="px-8 py-2 bg-lime-500 text-white hover:bg-lime-600 my-5">Add Cart</button>
                         </div>
                     </div>
                 </div>

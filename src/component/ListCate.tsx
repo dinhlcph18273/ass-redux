@@ -2,11 +2,20 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { listCategory } from '../features/category/categorySlice';
+import { Select } from 'antd';
+import { sort } from '../features/product/productSlice';
+
+const { Option } = Select;
 
 const ListCate = () => {
     const listcate = useAppSelector((item: any) => item.category.value)
     const dispatch = useAppDispatch();
 
+
+    function handleChange(value: any) {
+        console.log(`selected ${value}`);
+        dispatch(sort(value))
+    }
     useEffect(() => {
         dispatch(listCategory())
     }, [dispatch])
@@ -26,6 +35,13 @@ const ListCate = () => {
                     </ul>
                 </div>
             </aside >
+            <div className='mt-5'>
+                <Select defaultValue="all" style={{ width: 240 }} onChange={handleChange}>
+                    <Option value="/products">Tất cả</Option>
+                    <Option value={`/products?sort=price&order=asc`}>Giá cao đến thấp</Option>
+                    <Option value="disabled">Giá thấp đến cao</Option>
+                </Select>
+            </div>
         </div>
     )
 }

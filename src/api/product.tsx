@@ -40,11 +40,11 @@ export const update = (product: any) => {
 }
 
 export const sort = async (sort: any, order: any) => {
-    const url = `products?sort=${sort}&order=${order}`
+    const url = `/products?sort=${sort.sort}&order=${order.order}`
     return instance.get(url)
 }
 
 export const search = async (value: any) => {
-    const url = `products/search?q=${value.value}`
+    const url = `search?name=${value.value}`
     return instance.post(url, value)
 }

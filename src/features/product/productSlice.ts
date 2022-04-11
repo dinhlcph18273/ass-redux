@@ -74,12 +74,25 @@ export const readProductWithCate = createAsyncThunk(
 
 export const SearchProducts = createAsyncThunk(
     "product/SearchProducts",
-    async (q) => {
+    async (value: any) => {
         try {
-            const { data } = await search(q)
+            const { data } = await search(value)
             return data
         } catch (error) {
             console.log(error);
+        }
+    }
+)
+
+export const sort = createAsyncThunk(
+    "product/sort",
+    async (sort: any, order: any) => {
+        try {
+            const { data } = await sort(sort, order)
+            return data
+        } catch (error) {
+            console.log(error);
+
         }
     }
 )
@@ -111,7 +124,10 @@ const productSlice = createSlice({
         builder.addCase(readProductWithCate.fulfilled, (state, action) => {
             state.value = action.payload
         })
-        builder.addCase(SearchProducts.fulfilled, (state, action) => {
+        builder.addCase(SearchProducts.fulfilled, (state: any, action: any) => {
+            state.value = action.payload
+        })
+        builder.addCase(sort.fulfilled, (state, action) => {
             state.value = action.payload
         })
     }
