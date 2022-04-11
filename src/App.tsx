@@ -23,6 +23,7 @@ import ProductPage from './pages/ProductPage';
 import PrivateRouter from './component/PrivateRouter';
 import ProductDetail from './pages/ProductDetail';
 import ProductWithCate from './component/ProductWithCate';
+import Cart from './pages/Cart';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path='products/:id' element={<ProductDetail />} />
           <Route path='category/:id' element={<ProductWithCate />} />
           <Route path='about' element={<AboutPage />} />
+          <Route path='cart' element={<Cart />} />
         </Route>
         <Route path='admin' element={<PrivateRouter><AdminLayout /></PrivateRouter>}>
           <Route index element={<Dashboard />} />

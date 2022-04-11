@@ -57,7 +57,7 @@ const Header = () => {
                     <button className="absolute right-5"><i className="fa-solid fa-magnifying-glass" /></button>
                 </form>
                 <button className="ml-20 text-lg relative">
-                    Cart / <a href="/#/carts"><ShoppingCartOutlined /><span className="absolute top-0 text-red-500" id="quantityCart" /></a>
+                    Cart / <Link to="/cart"><ShoppingCartOutlined /><span className="absolute top-0 text-red-500" id="quantityCart" /></Link>
                 </button>
             </div>
         </div>
