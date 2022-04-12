@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button, Checkbox, notification } from 'antd';
 import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
 import { createUser } from '../features/user/userSlice';
@@ -12,8 +12,10 @@ const Signup = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const onFinish = (values: any) => {
-        console.log('Success:', values);
         dispatch(createUser(values))
+        notification.success({
+            message: "Đăng ký thành công"
+        })
         navigate('/signin')
     };
 

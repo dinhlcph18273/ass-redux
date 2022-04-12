@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button, Checkbox, notification } from 'antd';
 import { LockOutlined, MailOutlined } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
 import { login } from '../features/auth/authSlice';
@@ -11,8 +11,10 @@ const Signin = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const onFinish = (user: any) => {
-        console.log('Success:', user);
         dispatch(login(user))
+        notification.success({
+            message: "Đăng nhập thành công"
+        })
         navigate('/')
     };
 

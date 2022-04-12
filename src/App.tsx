@@ -24,6 +24,7 @@ import PrivateRouter from './component/PrivateRouter';
 import ProductDetail from './pages/ProductDetail';
 import ProductWithCate from './component/ProductWithCate';
 import Cart from './pages/Cart';
+import CheckOut from './pages/CheckOut';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path='category/:id' element={<ProductWithCate />} />
           <Route path='about' element={<AboutPage />} />
           <Route path='cart' element={<Cart />} />
+          <Route path='checkout' element={<CheckOut />} />
         </Route>
         <Route path='admin' element={<PrivateRouter><AdminLayout /></PrivateRouter>}>
           <Route index element={<Dashboard />} />
