@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { readCate } from "../../api/category";
-import { add, list, read, remove, search, update } from "../../api/product";
+import { add, list, read, remove, search, sort, update } from "../../api/product";
 
 export const getProducts = createAsyncThunk(
     "product/getProduct",
@@ -84,15 +84,14 @@ export const SearchProducts = createAsyncThunk(
     }
 )
 
-export const sort = createAsyncThunk(
-    "product/sort",
-    async (sort: any, order: any) => {
+export const sortBy = createAsyncThunk(
+    "product/sortBy",
+    async (order: any) => {
         try {
-            const { data } = await sort(sort, order)
+            const { data } = await sort("price", order)
             return data
         } catch (error) {
             console.log(error);
-
         }
     }
 )
@@ -127,7 +126,7 @@ const productSlice = createSlice({
         builder.addCase(SearchProducts.fulfilled, (state: any, action: any) => {
             state.value = action.payload
         })
-        builder.addCase(sort.fulfilled, (state, action) => {
+        builder.addCase(sortBy.fulfilled, (state, action) => {
             state.value = action.payload
         })
     }

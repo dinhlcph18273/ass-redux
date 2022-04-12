@@ -39,8 +39,8 @@ export const update = (product: any) => {
     })
 }
 
-export const sort = async (sort: any, order: any) => {
-    const url = `/products?sort=${sort.sort}&order=${order.order}`
+export const sort = async (sort: string, order: string) => {
+    const url = `/products?sort=${sort}&order=${order}`
     return instance.get(url)
 }
 
