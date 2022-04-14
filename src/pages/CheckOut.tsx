@@ -1,6 +1,8 @@
 import React from 'react'
 import Header from '../component/Header';
+import { Form, Input, Button, InputNumber } from 'antd';
 import { getTotalPrice } from '../utils/localStorage';
+import { useAppDispatch } from '../app/hooks';
 
 const CheckOut = () => {
     let cart: any = "";
@@ -9,6 +11,16 @@ const CheckOut = () => {
     }
     const { user } = JSON.parse(localStorage.getItem("user") as string);
     cart = cart.filter((item: any) => item.user === user._id);
+    const dispatch = useAppDispatch()
+    const onFinish = (values: any) => {
+        console.log(values)
+
+    };
+
+    const onFinishFailed = (errorInfo: any) => {
+        console.log('Failed:', errorInfo);
+    };
+
     return (
         <div>
             <div className='shadow-md'>
@@ -17,38 +29,75 @@ const CheckOut = () => {
                 </div>
             </div>
             <div className="max-w-7xl mx-auto py-20 ">
-                <form className="flex" id="form-checkout">
+                <Form name="basic"
+                    initialValues={{
+                        remember: true,
+                    }}
+                    onFinish={onFinish}
+                    onFinishFailed={onFinishFailed}
+                    autoComplete="off"
+                    className="flex" id="form-checkout">
                     <div className="w-[700px] border-t-2">
                         <h2 className="text-xl font-semibold py-5">THÔNG TIN THANH TOÁN</h2>
                         <p className="py-3" >
-                            <label className="font-semibold">Họ Tên *</label><br />
-                            <span >
-                                <input type="text" className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 border py-2 pl-2" name="name" id="name1" placeholder="Họ tên..." />
-                            </span>
+                            <Form.Item
+                                label="Name"
+                                name="name"
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: 'Please input your name!',
+                                    },
+                                ]}
+                            >
+                                <Input />
+                            </Form.Item>
                         </p>
                         <p className="py-3" >
-                            <label className="font-semibold">Địa chỉ *</label><br />
-                            <span >
-                                <input type="text" className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 border py-2 pl-2" name="address" id="address" placeholder="Địa chỉ..." />
-                            </span>
+                            <Form.Item
+                                label="Address"
+                                name="address"
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: 'Please input your address!',
+                                    },
+                                ]}
+                            >
+                                <Input />
+                            </Form.Item>
                         </p>
                         <p className="py-3" >
-                            <label className="font-semibold">Số điện thoại *</label><br />
-                            <span >
-                                <input type="text" className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 border py-2 pl-2" name="phone" id="phone" placeholder="SĐT..." />
-                            </span>
+                            <Form.Item
+                                label="Phone"
+                                name="phone"
+                                rules={[
+                                    {
+
+                                        required: true,
+                                        message: 'Please input your phone!',
+                                    },
+                                ]}
+                            >
+                                <InputNumber />
+                            </Form.Item>
                         </p>
                         <p className="py-3" >
-                            <label className="font-semibold">Email *</label><br />
-                            <span >
-                                <input type="text" className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 border py-2 pl-2" name="email" id="email" placeholder="Email..." />
-                            </span>
+                            <Form.Item
+                                label="Email"
+                                name="email"
+                                rules={[{ required: true, message: 'Please input your Email!' }, { type: 'email' }]}
+                            >
+                                <Input placeholder='Email' />
+                            </Form.Item>
                         </p>
                         <p className="py-3" >
-                            <label className="font-semibold">Ghi chú đơn hàng (Tùy chọn) *</label><br />
-                            <span >
-                                <textarea className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 border py-4 pl-2" id="note" placeholder="Ghi chú về đơn hàng, ví dụ: thời gian hay chỉ dẫn địa điểm giao hàng chi tiết hơn." rows={2} cols={5} defaultValue={""} />
-                            </span>
+                            <Form.Item
+                                label="Note"
+                                name="note"
+                            >
+                                <Input.TextArea />
+                            </Form.Item>
                         </p>
                     </div>
                     <div className="w-[500px] border-2 border-lime-500 ml-10 py-5 px-10">
@@ -84,9 +133,13 @@ const CheckOut = () => {
                             </tfoot>
                         </table>
                         <p className="pt-5">Người nhận: {user.email}</p>
-                        <button type="submit" className="py-2 px-5 mt-5 bg-orange-500 hover:bg-orange-600 text-white">Đặt hàng</button>
+                        <Form.Item wrapperCol={{ offset: 10, span: 13 }}>
+                            <Button type="primary" className='submit-to mt-3' htmlType="submit">
+                                Đặt hàng
+                            </Button>
+                        </Form.Item>
                     </div>
-                </form>
+                </Form>
             </div>
 
         </div>

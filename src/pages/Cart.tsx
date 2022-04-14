@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../component/Header'
 import { getTotalPrice, isAuthenticate, removeItemFromCart } from '../utils/localStorage';
-import { Button, Row, Table, Image, notification } from 'antd';
+import { Button, Row, Table, Image } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 
@@ -44,10 +44,6 @@ const Cart = () => {
             dataIndex: 'price',
         },
         {
-            title: 'Total',
-            dataIndex: "",
-        },
-        {
             title: 'Action',
             dataIndex: '_id',
             render: (id: any) => (
@@ -61,7 +57,6 @@ const Cart = () => {
         },
     ];
     return (
-
         <div>
             <div className='max-w-7xl mx-auto'>
                 <Header />
@@ -73,6 +68,7 @@ const Cart = () => {
                     footer={() => `Total: ${getTotalPrice()}`}
                 />
             </div>
+            <Button onClick={() => { navigate('/checkout') }} className="my-3 bg-sky-500 text-white hover:bg-sky-600">CheckOut</Button>
         </div>
     )
 }

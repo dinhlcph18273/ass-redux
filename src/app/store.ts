@@ -4,8 +4,7 @@ import userReducer from '../features/user/userSlice';
 import authReducer from '../features/auth/authSlice';
 import categoryReducer from "../features/category/categorySlice"
 import postReducer from "../features/post/postSlice"
-
-
+import orderReducer from "../features/order/orderSlice"
 
 
 export const store = configureStore({
@@ -14,7 +13,8 @@ export const store = configureStore({
     user: userReducer,
     auth: authReducer,
     category: categoryReducer,
-    post: postReducer
+    post: postReducer,
+    order: orderReducer
   },
 });
 

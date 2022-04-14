@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom';
 import Header from '../component/Header';
 import { readProduct } from '../features/product/productSlice';
-import { addToCart, isAuthenticate, removeItemFromCart } from '../utils/localStorage';
+import { addToCart, isAuthenticate } from '../utils/localStorage';
 import { Form, InputNumber, notification } from 'antd';
 const layout = {
     labelCol: { span: 8 },

@@ -17,7 +17,7 @@ const Header = () => {
     }
     const SignOut = () => {
         Signout("user");
-        navigate("/")
+        navigate("/signin")
     }
     return (
         <div>
